@@ -194,3 +194,9 @@ Provider là nơi cung cấp các serivce, repositories, factories, helpers,... 
 ```sh
 nest g service cats
 ```
+
+
+## CRUD API WITH NESTJS
+```sh
+https://viblo.asia/p/tim-hieu-nestjs-framework-crud-RnB5pOYJlPG
+```
