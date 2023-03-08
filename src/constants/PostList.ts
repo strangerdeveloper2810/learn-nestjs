@@ -1,4 +1,4 @@
-import { Post } from "src/dto/Post";
+import { Post } from "src/interface/Post";
 
 export const PostList: Post[] = [
   {
