@@ -2,7 +2,7 @@ import { Controller, Get, Param, Post, Body, Delete, Query } from "@nestjs/commo
 import { PostsService } from "./posts.service";
 import { CreatePostDto } from "../dto/create-post.dto";
 import { identity } from "rxjs";
-@Controller("posts")
+@Controller("api/posts")
 export class PostsController {
   constructor(private postService: PostsService) {}
 
@@ -12,9 +12,9 @@ export class PostsController {
     return posts;
   }
 
-  @Get(":postId")
-  async getCourse(@Param("postId") postId) {
-    const post = await this.postService.getPostId(postId);
+  @Get(":id")
+  async getPostID(@Param("id") id: number) {
+    const post = await this.postService.getPostId(id);
     return post;
   }
 
@@ -25,7 +25,7 @@ export class PostsController {
   }
 
   @Delete(":id")
-  async deletePost(@Param("id") id: string) {
+  async deletePost(@Param("id") id: number) {
     const post = await this.postService.deletePost(id);
     return post;
   }

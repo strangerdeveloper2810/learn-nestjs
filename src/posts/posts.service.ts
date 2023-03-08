@@ -1,31 +1,17 @@
 import { Injectable, HttpException } from "@nestjs/common";
+import { PostList } from "./../constants/PostList";
+import { Post } from "src/interface/Post";
 @Injectable()
 export class PostsService {
-  posts = [
-    {
-      id: 1,
-      title: "Chúng tôi là ai?",
-      description: "Sun Asterisk chứa đựng ước mơ và mục tiêu kiến tạo nên thật nhiều những điều tốt đẹp cho xã hội của tập thể những chiến binh mặt trời.",
-      author: "Sun*",
-      url: "https://sun-asterisk.vn/ve-chung-toi/",
-    },
-    {
-      id: 2,
-      title: "Chúng tôi làm gì?",
-      description:
-        'Là một Digital Creative Studio, Sun* luôn đề cao tinh thần làm chủ sản phẩm, tư duy sáng tạo trong mỗi dự án để mang đến những trải nghiệm "Awesome" nhất cho end-user',
-      author: "Sun*",
-      url: "https://sun-asterisk.vn/creative-engineering/",
-    },
-  ];
+  posts: Post[] = PostList;
 
-  getPost(): Promise<any> {
+  getPost(): Promise<Post[]> {
     return new Promise(resolve => {
       resolve(this.posts);
     });
   }
 
-  getPostId(postId: number): Promise<any> {
+  getPostId(postId: number): Promise<Post> {
     let id = Number(postId);
     return new Promise(resolve => {
       const post = this.posts.find(post => post.id === id);
@@ -36,14 +22,14 @@ export class PostsService {
     });
   }
 
-  addPost(post): Promise<any> {
+  addPost(post): Promise<Post[]> {
     return new Promise(resolve => {
       this.posts.push(post);
       resolve(this.posts);
     });
   }
 
-  deletePost(postId): Promise<any> {
+  deletePost(postId: number): Promise<Post[]> {
     let id = Number(postId);
     return new Promise(resolve => {
       const index = this.posts.findIndex(post => post.id === id);
